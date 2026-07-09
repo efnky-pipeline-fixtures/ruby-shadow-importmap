@@ -20,7 +20,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     groupadd -r rails && useradd -r -g rails -u 1001 rails && \
     chown -R rails:rails /app
 COPY --from=builder /app/vendor/bundle /app/vendor/bundle
-COPY --from=builder /app/.bundle /app/.bundle
 COPY --chown=rails:rails . .
 RUN bundle config set --local deployment 'true' && \
     bundle config set --local without 'development test' && \
